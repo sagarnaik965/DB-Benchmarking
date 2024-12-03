@@ -1,0 +1,122 @@
+Here’s a simple example of three table structures that mimic a typical relational database setup for benchmarking. The schema is designed to support various types of queries, including inserts, joins, and selects.
+
+---
+
+### **Schema Design**
+
+#### 1. `users` Table
+Stores information about users.
+
+```sql
+CREATE TABLE users (
+    user_id SERIAL PRIMARY KEY,
+    username VARCHAR(50) NOT NULL,
+    email VARCHAR(100) UNIQUE NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+```
+
+#### 2. `products` Table
+Stores information about products.
+
+```sql
+CREATE TABLE products (
+    product_id SERIAL PRIMARY KEY,
+    product_name VARCHAR(100) NOT NULL,
+    price DECIMAL(10, 2) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+```
+
+#### 3. `orders` Table
+Stores orders, linking users to the products they purchase.
+
+```sql
+CREATE TABLE orders (
+    order_id SERIAL PRIMARY KEY,
+    user_id INT NOT NULL REFERENCES users(user_id),
+    product_id INT NOT NULL REFERENCES products(product_id),
+    quantity INT NOT NULL,
+    order_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+```
+
+---
+
+### **Insert Queries**
+
+#### Insert into `users`
+```sql
+INSERT INTO users (username, email) VALUES 
+('user1', 'user1@example.com'),
+('user2', 'user2@example.com'),
+('user3', 'user3@example.com');
+```
+
+#### Insert into `products`
+```sql
+INSERT INTO products (product_name, price) VALUES 
+('Product A', 19.99),
+('Product B', 29.99),
+('Product C', 39.99);
+```
+
+#### Insert into `orders`
+```sql
+INSERT INTO orders (user_id, product_id, quantity) VALUES 
+(1, 1, 2),
+(1, 2, 1),
+(2, 3, 5),
+(3, 1, 1);
+```
+
+---
+
+### **Select Queries**
+
+#### Basic Select
+Get all users:
+```sql
+SELECT * FROM users;
+```
+
+#### Join Query
+Retrieve all orders along with user and product details:
+```sql
+SELECT 
+    o.order_id,
+    u.username AS user,
+    p.product_name AS product,
+    o.quantity,
+    o.order_date
+FROM 
+    orders o
+JOIN 
+    users u ON o.user_id = u.user_id
+JOIN 
+    products p ON o.product_id = p.product_id;
+```
+
+#### Aggregated Query
+Find the total quantity of products purchased by each user:
+```sql
+SELECT 
+    u.username AS user,
+    SUM(o.quantity) AS total_quantity
+FROM 
+    orders o
+JOIN 
+    users u ON o.user_id = u.user_id
+GROUP BY 
+    u.username;
+```
+
+---
+
+### Benchmarking Tips
+
+- For **INSERTs**, try bulk inserts with large data.
+- For **SELECTs**, benchmark with and without indexes on the join keys (e.g., `user_id` in `orders`).
+- Use `EXPLAIN ANALYZE` to observe query plans and identify bottlenecks.
+
+Would you like a script to populate these tables with a larger dataset for more extensive benchmarking?
