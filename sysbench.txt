@@ -7,3 +7,44 @@ docker run --rm -v "D:/TECH & SOFT/DB-Benchmarking/mnt:/mnt" sysbench:custom sys
   --pgsql-db=Loadtest ^
   --threads=1 ^
   --time=1 run
+
+
+
+
+docker run --rm -v "D:/TECH & SOFT/DB-Benchmarking/mnt:/mnt" sysbench:custom sysbench /mnt/test_query-normal.lua ^
+  --db-driver=pgsql ^
+  --pgsql-host=10.210.4.213 ^
+  --pgsql-port=5432 ^
+  --pgsql-user=postgres ^
+  --pgsql-password=admin ^
+  --pgsql-db=Loadtest ^
+  --threads=10 ^
+  --report-interval=2 ^
+  --time=6 run
+
+
+docker run --rm -v "D:/TECH & SOFT/DB-Benchmarking/mnt:/mnt" sysbench:custom sysbench /mnt/test_query-normal.lua `
+  --db-driver=pgsql `
+  --pgsql-host=10.210.4.213 `
+  --pgsql-port=5432 `
+  --pgsql-user=postgres `
+  --pgsql-password=admin `
+  --pgsql-db=Loadtest `
+  --threads=10 `
+  --report-interval=5 `
+  --time=6 run | Tee-Object -FilePath "D:/TECH & SOFT/DB-Benchmarking/results.txt"
+
+
+
+
+
+docker run --rm -v "D:/TECH & SOFT/DB-Benchmarking/mnt:/mnt" sysbench:custom sysbench /mnt/test_query-normal.lua `
+  --db-driver=pgsql `
+  --pgsql-host=10.210.4.213 `
+  --pgsql-port=5432 `
+  --pgsql-user=postgres `
+  --pgsql-password=admin `
+  --pgsql-db=Loadtest `
+  --threads=10 `
+  --report-interval=2 `
+  --time=6 run | Tee-Object -FilePath "D:/TECH & SOFT/DB-Benchmarking/results.txt"
