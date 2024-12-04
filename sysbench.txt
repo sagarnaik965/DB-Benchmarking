@@ -1,0 +1,9 @@
+docker run --rm -v "D:/TECH & SOFT/DB-Benchmarking/mnt:/mnt" sysbench:custom sysbench /mnt/test_query.lua ^
+  --db-driver=pgsql ^
+  --pgsql-host=10.210.4.213 ^
+  --pgsql-port=5432 ^
+  --pgsql-user=postgres ^
+  --pgsql-password=admin ^
+  --pgsql-db=Loadtest ^
+  --threads=1 ^
+  --time=1 run
