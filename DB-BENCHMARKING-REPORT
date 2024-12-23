@@ -1,0 +1,258 @@
+PSQL BENCHMARKING REPORTS
+
+
+INFRA STATS:
+RAM  CPU  CYFUTURE 10.50.10.51 POSTGRESQL
+RAM  CPU  CYFUTURE 10.10.10.11 POSTGRESQL-DOCKERBASED
+RAM  CPU  CYFUTURE 10.10.10.12 SYSBENCH
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                          ::OPERATIONS/QUERY-TYPE::
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+A. INSERT
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+                                                          A.1: VM BASED PSQL
+    SQL statistics:
+    queries performed:
+        read:                            0
+        write:                           324753
+        other:                           0
+        total:                           324753
+    transactions:                        324753 (2706.02 per sec.)
+    queries:                             324753 (2706.02 per sec.)
+    ignored errors:                      0      (0.00 per sec.)
+    reconnects:                          0      (0.00 per sec.)
+
+General statistics:
+    total time:                          120.0100s
+    total number of events:              324753
+
+Latency (ms):
+         min:                                    1.47
+         avg:                                    3.69
+         max:                                   27.63
+         95th percentile:                        5.57
+         sum:                              1199328.61
+
+Threads fairness:
+    events (avg/stddev):           32475.3000/11.77
+    execution time (avg/stddev):   119.9329/0.01
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+                                                          A.2: DOCKER BASED PSQL
+
+SQL statistics:
+    queries performed:
+        read:                            0
+        write:                           273852
+        other:                           0
+        total:                           273852
+    transactions:                        273852 (2281.97 per sec.)
+    queries:                             273852 (2281.97 per sec.)
+    ignored errors:                      0      (0.00 per sec.)
+    reconnects:                          0      (0.00 per sec.)
+
+General statistics:
+    total time:                          120.0048s
+    total number of events:              273852
+
+Latency (ms):
+         min:                                    1.63
+         avg:                                    4.38
+         max:                                   84.13
+         95th percentile:                        7.56
+         sum:                              1199591.88
+
+Threads fairness:
+    events (avg/stddev):           27385.2000/5.79
+    execution time (avg/stddev):   119.9592/0.00
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+B. UPDATE
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+                                                          A.1: VM BASED PSQL
+SQL statistics:
+    queries performed:
+        read:                            0
+        write:                           64150
+        other:                           0
+        total:                           64150
+    transactions:                        64150  (534.51 per sec.)
+    queries:                             64150  (534.51 per sec.)
+    ignored errors:                      0      (0.00 per sec.)
+    reconnects:                          0      (0.00 per sec.)
+
+General statistics:
+    total time:                          120.0143s
+    total number of events:              64150
+
+Latency (ms):
+         min:                                    1.58
+         avg:                                   18.71
+         max:                                  186.42
+         95th percentile:                       48.34
+         sum:                              1199926.57
+
+Threads fairness:
+    events (avg/stddev):           6415.0000/67.18
+    execution time (avg/stddev):   119.9927/0.01
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+                                                          A.2: DOCKER BASED PSQL
+
+SQL statistics:
+    queries performed:
+        read:                            0
+        write:                           50721
+        other:                           0
+        total:                           50721
+    transactions:                        50721  (422.58 per sec.)
+    queries:                             50721  (422.58 per sec.)
+    ignored errors:                      0      (0.00 per sec.)
+    reconnects:                          0      (0.00 per sec.)
+
+General statistics:
+    total time:                          120.0244s
+    total number of events:              50721
+
+Latency (ms):
+         min:                                    1.73
+         avg:                                   23.66
+         max:                                  291.90
+         95th percentile:                       61.08
+         sum:                              1200004.37
+
+Threads fairness:
+    events (avg/stddev):           5072.1000/36.19
+    execution time (avg/stddev):   120.0004/0.01
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+B. SELECT
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+                                                          A.1: VM BASED PSQL NORMAL SELECT ( Query returns only single record ) 
+SQL statistics:
+    queries performed:
+        read:                            1794667
+        write:                           0
+        other:                           0
+        total:                           1794667
+    transactions:                        1794667 (14954.97 per sec.)
+    queries:                             1794667 (14954.97 per sec.)
+    ignored errors:                      0      (0.00 per sec.)
+    reconnects:                          0      (0.00 per sec.)
+
+General statistics:
+    total time:                          120.0032s
+    total number of events:              1794667
+
+Latency (ms):
+         min:                                    0.20
+         avg:                                    0.67
+         max:                                  248.53
+         95th percentile:                        0.58
+         sum:                              1197599.25
+
+Threads fairness:
+    events (avg/stddev):           179466.7000/9953.78
+    execution time (avg/stddev):   119.7599/0.02
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+                                                          A.2: DOCKER BASED PSQL NORMAL SELECT ( Query returns only single record ) 
+
+SQL statistics:
+    queries performed:
+        read:                            1452754
+        write:                           0
+        other:                           0
+        total:                           1452754
+    transactions:                        1452754 (12105.68 per sec.)
+    queries:                             1452754 (12105.68 per sec.)
+    ignored errors:                      0      (0.00 per sec.)
+    reconnects:                          0      (0.00 per sec.)
+
+General statistics:
+    total time:                          120.0046s
+    total number of events:              1452754
+
+Latency (ms):
+         min:                                    0.21
+         avg:                                    0.82
+         max:                                  271.20
+         95th percentile:                        0.60
+         sum:                              1197768.07
+
+Threads fairness:
+    events (avg/stddev):           145275.4000/4983.84
+    execution time (avg/stddev):   119.7768/0.02
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+                                                          A.3: VM BASED PSQL JOIN SELECT ( Query returns only single record ) 
+SQL statistics:
+    queries performed:
+        read:                            969268
+        write:                           0
+        other:                           0
+        total:                           969268
+    transactions:                        969268 (8074.63 per sec.)
+    queries:                             969268 (8074.63 per sec.)
+    ignored errors:                      0      (0.00 per sec.)
+    reconnects:                          0      (0.00 per sec.)
+
+General statistics:
+    total time:                          120.0370s
+    total number of events:              969268
+
+Latency (ms):
+         min:                                    0.29
+         avg:                                    1.24
+         max:                                  260.95
+         95th percentile:                        0.77
+         sum:                              1198862.17
+
+Threads fairness:
+    events (avg/stddev):           96926.8000/2582.19
+    execution time (avg/stddev):   119.8862/0.01
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+                                                          A.4: DOCKER BASED PSQL JOIN SELECT ( Query returns only single record ) 
+
+SQL statistics:
+    queries performed:
+        read:                            828339
+        write:                           0
+        other:                           0
+        total:                           828339
+    transactions:                        828339 (6902.54 per sec.)
+    queries:                             828339 (6902.54 per sec.)
+    ignored errors:                      0      (0.00 per sec.)
+    reconnects:                          0      (0.00 per sec.)
+
+General statistics:
+    total time:                          120.0029s
+    total number of events:              828339
+
+Latency (ms):
+         min:                                    0.33
+         avg:                                    1.45
+         max:                                  288.28
+         95th percentile:                        0.80
+         sum:                              1198812.19
+
+Threads fairness:
+    events (avg/stddev):           82833.9000/832.92
+    execution time (avg/stddev):   119.8812/0.00
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
