@@ -168,6 +168,36 @@ Latency (ms):
 Threads fairness:
     events (avg/stddev):           179466.7000/9953.78
     execution time (avg/stddev):   119.7599/0.02
+
+
+
+
+[ 600s ] queries performed: 823402
+SQL statistics:
+    queries performed:
+        read:                            8641701
+        write:                           0
+        other:                           0
+        total:                           8641701
+    transactions:                        8641701 (14402.75 per sec.)
+    queries:                             8641701 (14402.75 per sec.)
+    ignored errors:                      0      (0.00 per sec.)
+    reconnects:                          0      (0.00 per sec.)
+
+General statistics:
+    total time:                          600.0023s
+    total number of events:              8641701
+
+Latency (ms):
+         min:                                    0.19
+         avg:                                    0.69
+         max:                                  291.61
+         95th percentile:                        0.53
+         sum:                              5989590.23
+
+Threads fairness:
+    events (avg/stddev):           864170.1000/49357.55
+    execution time (avg/stddev):   598.9590/0.06
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
                                                           A.2: DOCKER BASED PSQL NORMAL SELECT ( Query returns only single record ) 
@@ -197,6 +227,37 @@ Latency (ms):
 Threads fairness:
     events (avg/stddev):           145275.4000/4983.84
     execution time (avg/stddev):   119.7768/0.02
+
+
+
+[ 600s ] thds: 10 tps: 10639.15 qps: 10639.15 (r/w/o: 10639.15/0.00/0.00) lat (ms,95%): 0.60 err/s: 0.00 reconn/s: 0.00
+SQL statistics:
+    queries performed:
+        read:                            6587709
+        write:                           0
+        other:                           0
+        total:                           6587709
+    transactions:                        6587709 (10979.12 per sec.)
+    queries:                             6587709 (10979.12 per sec.)
+    ignored errors:                      0      (0.00 per sec.)
+    reconnects:                          0      (0.00 per sec.)
+
+General statistics:
+    total time:                          600.0198s
+    total number of events:              6587709
+
+Latency (ms):
+         min:                                    0.22
+         avg:                                    0.91
+         max:                                  289.84
+         95th percentile:                        0.61
+         sum:                              5992295.18
+
+Threads fairness:
+    events (avg/stddev):           658770.9000/12252.77
+    execution time (avg/stddev):   599.2295/0.03
+
+
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
                                                           A.3: VM BASED PSQL JOIN SELECT ( Query returns only single record ) 
