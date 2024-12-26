@@ -1,10 +1,12 @@
 PSQL BENCHMARKING REPORTS
+this is statistics for benchamrking result perfomed on both docker based and standalone vm based 
+follwings are result for load test perfomed
 
 
 INFRA STATS:
-RAM  CPU  CYFUTURE 10.50.10.51 POSTGRESQL
-RAM  CPU  CYFUTURE 10.10.10.11 POSTGRESQL-DOCKERBASED
-RAM  CPU  CYFUTURE 10.10.10.12 SYSBENCH
+RAM:16gb  CPU  CYFUTURE 10.50.10.51 POSTGRESQL
+RAM:16gb  CPU  CYFUTURE 10.10.10.11 POSTGRESQL-DOCKERBASED
+RAM:16gb  CPU  CYFUTURE 10.10.10.12 SYSBENCH
 
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
