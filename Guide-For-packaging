@@ -1,0 +1,71 @@
+https://github.com/eduardolat/pgbackweb
+https://github.com/sinawic/4yt/tree/master/postgres/pgbackweb
+CREATE DATABASE sinawic;
+
+CREATE TABLE users (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(50) NOT NULL,
+    email VARCHAR(50) NOT NULL
+);
+
+INSERT INTO users (name, email)
+VALUES ('Jane Doe', 'jane.doe@example.com'),
+       ('Alice Smith', 'alice.smith@example.com'),
+       ('Bob Johnson', 'bob.johnson@example.com');
+
+DROP DATABASE sinawic;
+
+
+################################################   DOCKER-COMPOSE.YML FOR POSTGRESS AS DOCKER  ##################################################################################
+version: '3.9'
+
+services:
+  postgres:
+    image: postgres:17
+    container_name: postgres
+    environment:
+      POSTGRES_USER: postgres             # Set your database user
+      POSTGRES_PASSWORD: root         # Set your database password
+      POSTGRES_DB: mydb               # Default database to create
+    ports:
+      - "54032:5432"                   # Expose the PostgreSQL port
+    volumes:
+      - ./postgres_data:/var/lib/postgresql/data  # Persistent storage
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "root"]
+      interval: 10s
+      retries: 5
+    restart: always                   # Restart policy for production
+
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    container_name: pgadmin
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@admin.com  # pgAdmin admin email
+      PGADMIN_DEFAULT_PASSWORD: admin        # pgAdmin admin password
+    ports:
+      - "5050:80"                   # Expose pgAdmin on port 5050
+    volumes:
+      - ./pgadmin_data:/var/lib/pgadmin  # Persistent storage
+    restart: always                  # Restart policy for production
+
+volumes:
+  postgres_data:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: ./postgres_data          # Mount host directory for PostgreSQL data
+
+  pgadmin_data:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: ./pgadmin_data           # Mount host directory for pgAdmin data
+###########################################################################################################################################
+
+
+
+
+
